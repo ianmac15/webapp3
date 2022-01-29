@@ -60,10 +60,10 @@ public class CarController {
 //    }
 
 //    @PostMapping("newcar/{carVariables}")
-////    public String newCar(@PathVariable(value = "carVariables") String[] aCar) {
-////        carService.saveCar(new Car(aCar[0],aCar[1],aCar[2]));
-////        return "Car " + aCar[0] + " has been added to the list.";
-////    }
+//    public String newCar(@PathVariable(value = "carVariables") String[] aCar) {
+//        carService.saveCar(new Car(aCar[0],aCar[1],aCar[2]));
+//        return "Car " + aCar[0] + " has been added to the list.";
+//    }
 
 
 }
