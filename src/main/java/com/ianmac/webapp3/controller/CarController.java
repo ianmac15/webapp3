@@ -1,18 +1,25 @@
 package com.ianmac.webapp3.controller;
 
+import com.ianmac.webapp3.exceptions.ResourceNotFoundException;
 import com.ianmac.webapp3.model.Car;
+import com.ianmac.webapp3.repository.CarRepository;
 import com.ianmac.webapp3.service.CarServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
+@RequestMapping("/api")
 public class CarController {
 
     @Autowired
     private CarServiceImpl carService;
 
+    @Autowired
+    private CarRepository carRepository;
 
 
     @GetMapping("car/all")
@@ -21,9 +28,15 @@ public class CarController {
     }
 
     @GetMapping("car/{id}")
-    public Car getCar(@PathVariable(value = "id") long anID) {
+    public Car getCar(@PathVariable(value = "id") long id) {
 
-        return carService.getCarById(anID);
+        return carService.getCarById(id);
+//        Car user = this.carRepository.findById(id).orElseThrow(
+//                ()-> new ResourceNotFoundException("User not found")
+//        );
+//
+//        return  ResponseEntity.ok().body(user);
+
 
     }
 

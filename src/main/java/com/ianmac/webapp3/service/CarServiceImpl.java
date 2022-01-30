@@ -1,8 +1,11 @@
 package com.ianmac.webapp3.service;
 
+import com.ianmac.webapp3.exceptions.ResourceNotFoundException;
 import com.ianmac.webapp3.model.Car;
 import com.ianmac.webapp3.repository.CarRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -32,21 +35,33 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public Car getCarById(long id) {
+
+
         Optional<Car> carToFind = carRepository.findById(id);
         Car car = null;
-
+//        Car car1 = carRepository.findById(id);
+//        return new ResponseEntity<>(car1, HttpStatus.OK);
         if (carToFind.isPresent()) {
             car = carToFind.get();
+            return car;
         } else {
-            throw new RuntimeException("Car with id: " + id + ", not found");
-
+            throw new ResourceNotFoundException("Car with id: " + id + ", not found");
+//            return new ResponseEntity<>(new RuntimeException(), HttpStatus.NOT_FOUND);
+//            throw new ResourceNotFoundException("Car wasn't found");
         }
-        return car;
+//        return car;
     }
 
     @Override
     public void deleteCarById(long id) {
-        carRepository.deleteById(id);
+        Optional<Car> car = carRepository.findById(id);
+
+        if (car.isPresent()) {
+            carRepository.deleteById(id);
+        } else {
+            throw new ResourceNotFoundException("Car with id: " + id + ", not found");
+        }
+
     }
 
     @Override
