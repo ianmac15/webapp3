@@ -14,7 +14,7 @@ import java.util.Optional;
 @Service
 public class CarServiceImpl implements CarService{
 
-    @Autowired
+//    @Autowired
     private final CarRepository carRepository;
 
     public CarServiceImpl(CarRepository carRepository) {
@@ -38,7 +38,7 @@ public class CarServiceImpl implements CarService{
 
 
         Optional<Car> carToFind = carRepository.findById(id);
-        Car car = null;
+        Car car;
 //        Car car1 = carRepository.findById(id);
 //        return new ResponseEntity<>(car1, HttpStatus.OK);
         if (carToFind.isPresent()) {
@@ -46,8 +46,8 @@ public class CarServiceImpl implements CarService{
             return car;
         } else {
             throw new ResourceNotFoundException("Car with id: " + id + ", not found");
-//            return new ResponseEntity<>(new RuntimeException(), HttpStatus.NOT_FOUND);
-//            throw new ResourceNotFoundException("Car wasn't found");
+////            return new ResponseEntity<>(new RuntimeException(), HttpStatus.NOT_FOUND);
+////            throw new ResourceNotFoundException("Car wasn't found");
         }
 //        return car;
     }

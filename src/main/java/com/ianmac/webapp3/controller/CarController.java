@@ -15,12 +15,12 @@ import java.util.List;
 @RequestMapping("/api")
 public class CarController {
 
-    @Autowired
+//    @Autowired
     private CarServiceImpl carService;
 
-    @Autowired
-    private CarRepository carRepository;
-
+    public CarController(CarServiceImpl carService) {
+        this.carService = carService;
+    }
 
     @GetMapping("car/all")
     public List<Car> getAllCars() {
