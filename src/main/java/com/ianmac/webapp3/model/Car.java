@@ -8,12 +8,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 //@Data
 //@NoArgsConstructor
 //@AllArgsConstructor
 public class Car {
+
 
     private String brand;
     private String model;

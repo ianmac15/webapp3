@@ -1,5 +1,6 @@
 package com.ianmac.webapp3.service;
 
+import com.ianmac.webapp3.exceptions.InvalidInputException;
 import com.ianmac.webapp3.exceptions.ResourceNotFoundException;
 import com.ianmac.webapp3.model.Car;
 import com.ianmac.webapp3.repository.CarRepository;
@@ -36,7 +37,9 @@ public class CarServiceImpl implements CarService{
     @Override
     public Car getCarById(long id) {
 
-
+//        if (id.equals(null)) {
+//            throw new InvalidInputException("Id is not valid!. Id must be a number!");
+//        }
         Optional<Car> carToFind = carRepository.findById(id);
         Car car;
 //        Car car1 = carRepository.findById(id);
@@ -54,6 +57,9 @@ public class CarServiceImpl implements CarService{
 
     @Override
     public void deleteCarById(long id) {
+
+
+
         Optional<Car> car = carRepository.findById(id);
 
         if (car.isPresent()) {
