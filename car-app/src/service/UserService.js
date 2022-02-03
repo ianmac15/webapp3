@@ -1,11 +1,11 @@
 import axios from "axios";
 
-const USERS_REST_API_URL = 'http://localhost:8080/api/cars';
+const USERS_REST_API_URL = 'http://localhost:8080/api/car/';
 
 class UserService{
 
     getUsers(){
-        axios.get(USERS_REST_API_URL);
+        return axios.get(USERS_REST_API_URL);
     }
 }
 

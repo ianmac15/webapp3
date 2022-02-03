@@ -11,8 +11,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+//@CrossOrigin(origins = "http://localhost:3000")
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/car")
 public class CarController {
 
 //    @Autowired
@@ -22,12 +23,12 @@ public class CarController {
         this.carService = carService;
     }
 
-    @GetMapping("car/all")
+    @GetMapping
     public List<Car> getAllCars() {
         return carService.getAllCars();
     }
 
-    @GetMapping("car/{id}")
+    @GetMapping("/{id}")
     public Car getCar(@PathVariable(value = "id") long id) {
 
         return carService.getCarById(id);
@@ -40,25 +41,25 @@ public class CarController {
 
     }
 
-    @PostMapping("car/save")
+    @PostMapping
     public Car addCar(@RequestBody Car car) {
         Car car1 = carService.saveCar(car);
         return car1;
     }
 
-    @PutMapping("car/{id}")
+    @PutMapping("/{id}")
     public Car updateCar(@PathVariable(value = "id") long id, @RequestBody Car car) {
         Car car1 = carService.updateCar(id, car);
         return car1;
 //        return new ResponseEntity<>(car1, HttpStatus.OK);
     }
 
-    @DeleteMapping("car/{id}")
+    @DeleteMapping("/{id}")
     public void deleteCar(@PathVariable(value = "id") long id) {
         carService.deleteCarById(id);
     }
 
-    @DeleteMapping("car/all")
+    @DeleteMapping
     public void deleteAllCars() {
         carService.deleteAllCars();
     }
