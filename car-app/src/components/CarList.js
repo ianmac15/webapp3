@@ -12,13 +12,13 @@ class CarList extends Component {
     }
 
     componentDidMount() {
-        fetch('api/car')
+        fetch('car')
             .then(response => response.json())
             .then(data => this.setState({ clients: data }));
     }
 
     async remove(id) {
-        await fetch(`api/car/${id}`, {
+        await fetch(`cars/${id}`, {
             method: 'DELETE',
             headers: {
                 'Accept': 'application/json',
@@ -28,6 +28,21 @@ class CarList extends Component {
             let updatedCars = [...this.state.cars].filter(i => i.id !== id);
             this.setState({ clients: updatedCars });
         });
+    }
+
+    render() {
+        const {cars, isLoading} = this.state;
+
+        if (isLoading) {
+            return <p>Loading...</p>
+        }
+
+        const carList = cars.map(car =>
+            {
+                return <tr key={client.id}>
+                    <td></td>
+                </tr>
+            })
     }
 
 }

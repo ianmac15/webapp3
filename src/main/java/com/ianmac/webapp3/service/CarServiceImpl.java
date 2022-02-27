@@ -58,8 +58,6 @@ public class CarServiceImpl implements CarService{
     @Override
     public void deleteCarById(long id) {
 
-
-
         Optional<Car> car = carRepository.findById(id);
 
         if (car.isPresent()) {
@@ -80,7 +78,7 @@ public class CarServiceImpl implements CarService{
         Car car1 = getCarById(id);
         car1.setBrand(car.getBrand());
         car1.setModel(car.getModel());
-        car1.setColour(car.getColour());
+        car1.setUsed(car.getIsUsed());
         return carRepository.save(car1);
     }
 }

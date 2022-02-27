@@ -22,7 +22,7 @@ public class UserTests {
     @Test
     public void testSaveCar() {
 
-        Car car1 = new Car("Mazda","Rx7", "Blue");
+        Car car1 = new Car("Mazda","Rx7", true);
         carRepository2.save(car1);
         Optional<Car> newCar = carRepository2.findById(Long.valueOf(1));
 
@@ -33,8 +33,8 @@ public class UserTests {
 
     @Test
     public void testGetCar() {
-        Car car1 = new Car("Mazda","Rx7", "Blue");
-        Car car2 = new Car("Nissan","Skyline", "Silver");
+        Car car1 = new Car("Mazda","Rx7", false);
+        Car car2 = new Car("Nissan","Skyline", true);
 
         carRepository2.save(car1);
         carRepository2.save(car2);
@@ -47,8 +47,8 @@ public class UserTests {
     @Test
     public void testGetAllCars() {
 
-        Car car1 = new Car("Mazda","Rx7", "Blue");
-        Car car2 = new Car("Nissan","Skyline", "Silver");
+        Car car1 = new Car("Mazda","Rx7", true);
+        Car car2 = new Car("Nissan","Skyline", false);
 
         carRepository2.save(car1);
         carRepository2.save(car2);

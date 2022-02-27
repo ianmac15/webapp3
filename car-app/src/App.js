@@ -8,7 +8,7 @@ class App extends Component {
   };
 
   async componentDidMount() {
-    const response = await fetch('api/car');
+    const response = await fetch('cars');
     const body = await response.json();
     this.setState({ cars: body });
   }
