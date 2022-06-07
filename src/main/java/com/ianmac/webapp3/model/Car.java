@@ -20,7 +20,7 @@ public class Car {
 
     private String brand;
     private String model;
-    private String colour;
+    private boolean isUsed;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,19 +31,16 @@ public class Car {
     public Car() {
     }
 
-    public Car(String brand) {
-        this.brand = brand;
-    }
-
-    public Car(String brand, String model) {
+    public Car(String brand, String model, boolean isUsed) {
         this.brand = brand;
         this.model = model;
+        this.isUsed = isUsed;
     }
 
-    public Car(String brand, String model, String colour) {
-        this.brand = brand;
-        this.model = model;
-        this.colour = colour;
+
+
+    public void setUsed(boolean isUsed) {
+        this.isUsed = isUsed;
     }
 
     public void setBrand(String brand) {
@@ -54,13 +51,7 @@ public class Car {
         this.model = model;
     }
 
-    public void setColour(String colour) {
-        this.colour = colour;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
+    public void setId(long id) {this.id = id;}
 
     public String getBrand() {
         return brand;
@@ -70,8 +61,8 @@ public class Car {
         return model;
     }
 
-    public String getColour() {
-        return colour;
+    public boolean getIsUsed() {
+        return isUsed;
     }
 
     public long getId() {
