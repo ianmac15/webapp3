@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import { Component } from 'react';
 
+<<<<<<< Updated upstream:car-app/src/App.js
 class App extends Component {
   state = {
     cars: []
@@ -39,6 +40,17 @@ class App extends Component {
               )
             }
           </tbody>
+=======
+function App() {
+  
+
+  return (
+    <div className="App">
+      <UserComponent/>
+    </div>
+  );
+}
+>>>>>>> Stashed changes:car-app/src/App.tsx
 
         </table>
       </div>
